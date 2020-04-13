@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <form>
+        <select>
+            {% for info in infos %}
+            <option value="{{info.id}}">{{info.desc}}</option>
+            {% endfor %}
+        </select>
+    </form>
+</body>
+</html>

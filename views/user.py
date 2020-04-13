@@ -1,11 +1,9 @@
 # -*- coding:utf-8 -*-
 
 from flask import Blueprint,session,request,render_template,current_app
-
-
-
-#print(current_app.config['BASE_PATH'])
-user=Blueprint("user",__name__,template_folder="../templates/user")
+import os
+BASE_PATH = current_app.config.get("BASE_PATH")
+user=Blueprint("user",__name__,template_folder=os.path.join(BASE_PATH,"templates/user"))
 
 @user.route("/login",methods=["POST","GET"])
 def login():

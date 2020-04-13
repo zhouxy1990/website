@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from flask import Blueprint,session,redirect,request
+from flask import Blueprint,session,redirect
 
 
 account = Blueprint("account",__name__,url_prefix="/acc")
