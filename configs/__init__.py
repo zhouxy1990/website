@@ -14,3 +14,9 @@ class DBConfig(BaseConfig):
         "DBNAME" : "cmdb",
         "PORT" : 3306,
     }
+
+    SQL_FILE_PATH = os.path.join(BaseConfig.BASE_PATH,"models/sqlConf/cmdb.yaml")
+    PAGE_DICT = {
+        "1" : "host_detail.html",
+        "2" : "switch_detail.html",
+    }

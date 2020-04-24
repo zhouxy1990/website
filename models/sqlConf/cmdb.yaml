@@ -1,0 +1,13 @@
+---
+getSchemaInfo : "SELECT `id`,`name`,`desc` FROM `schema`;"
+getDetailBySchemaId : "select
+                       	`entity`.`id`,
+                       	%s
+                       from `value`,`entity`,`field` where
+                                                      `value`.field_id=`field`.`id` and `value`.entity_id=`entity`.`id`
+                                                      and `entity`.schema_id= %s group by `entity`.`id`; "
+
+
+getFieldName : "select `name` from `field` where schema_id = %s ;"
+sqlForQueryValue : "max(case `field`.`name` when '%s' then `value`.`value` end) %s"
+
