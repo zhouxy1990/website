@@ -1,4 +1,4 @@
-该项目主要通过`jenkins`+`github`+`docker`+`ansible`实现CD/CD简单流程，一个简单的DEMO
+该项目主要通过`jenkins`+`github`+`docker`+`ansible`实现CI/CD简单流程，一个简单的DEMO
 
 1. 在`jenkins`中配置源码管理和构建触发器、构建步骤
 

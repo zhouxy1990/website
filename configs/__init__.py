@@ -9,7 +9,7 @@ class BaseConfig(object):
 class DBConfig(BaseConfig):
     HOST = os.environ.get('CONNECT_DB_HOST','127.0.0.1')
     CMDB ={
-       "HOST": HOST,
+       "HOST": '192.168.33.10',
         "USER":"root",
         "PASSWORD" : "root1234",
         "DBNAME" : "cmdb",
