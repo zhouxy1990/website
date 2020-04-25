@@ -85,11 +85,13 @@ insert into `schema` (id,name,`desc`) values (2,'switch','交换机');
 
 insert into `field` (`name`,schema_id) values('hostname',1);
 insert into `field` (`name`,schema_id) values ('ip',1);
-
+insert into `field` (`name`,schema_id) values ('status',1);
 insert into `entity` (`key`,schema_id) values ('asdasdasdasdasdaaaaaa',1);
 
 insert into `value` (entity_id,field_id,`value`) values (1,1,'WEBSERVER');
 insert into `value` (entity_id,field_id,`value`) values (1,2,'192.168.10.3');
+insert into `value` (entity_id,field_id,`value`) values (
+1,3,'absent');
 
 
 
