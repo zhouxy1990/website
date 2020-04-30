@@ -22,6 +22,8 @@ def getDetailBySchemaId(schema_id):
 
     sqlStr=loadYaml().get("getDetailBySchemaId")
     value=getDetail(schema_id)
+    if not value :
+        return None
     sql = sqlStr % (value,schema_id)
     result = CONN.getAll(sql)
     #print(result)
@@ -49,7 +51,7 @@ def getDetail(schema_id):
     getField = loadYaml().get("getFieldName")
     field = CONN.getAll(getField, param=(schema_id))
     if not field :
-        raise ValueError()
+        return None
     queryValue = loadYaml().get("sqlForQueryValue")
     queryValueList = map(lambda x: queryValue % (x.get("name"), x.get("name")), field)
     queryValueStr = ",".join(queryValueList)

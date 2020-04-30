@@ -20,6 +20,9 @@ def detail():
     id = request.args.get("id")
     detail_info = db.getDetailBySchemaId(id)
     page = current_app.config.get("PAGE_DICT").get(id)
+    if not detail_info :
+        error_msg="未找到相关信息"
+        return render_template(page, error_msg=error_msg)
     if not page :
-        render_template("404.html")
+        render_template("error_page.html")
     return render_template(page,detail_info=detail_info)
