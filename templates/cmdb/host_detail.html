@@ -9,6 +9,10 @@
     <script src="/statics/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
+    <div>
+        <a class="btn btn-primary" href="/index" role="button">返回</a>
+        <a class="btn btn-default" href="/add_host" role="button">添加</a>
+    </div>
     <table class="table table-hover table-striped table-bordered" >
         <tr>
             <th></th>
@@ -16,14 +20,18 @@
             <th>ip</th>
             <th>status</th>
         </tr>
-        {% for detail in detail_info %}
-        <tr {% if detail.status=='absent' %} class="danger" {% endif %}>
-            <td>{{loop.index}}</td>
-            <td>{{detail.hostname}}</td>
-            <td>{{detail.ip}}</td>
-            <td>{{detail.status}}</td>
-        </tr>
-        {% endfor %}
+        {% if error_msg %}
+            <tr>{{error_msg}}</tr>
+        {% else %}
+            {% for detail in detail_info %}
+                 <tr {% if detail.status=='absent' %} class="danger" {% endif %}>
+                    <td>{{loop.index}}</td>
+                    <td>{{detail.hostname}}</td>
+                    <td>{{detail.ip}}</td>
+                    <td>{{detail.status}}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
     </table>
 </body>
 </html>

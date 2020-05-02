@@ -24,5 +24,12 @@ def detail():
         error_msg="未找到相关信息"
         return render_template(page, error_msg=error_msg)
     if not page :
-        render_template("error_page.html")
+        return render_template("error_page.html")
     return render_template(page,detail_info=detail_info)
+
+@cmdb.route("/add_host",methods=["POST","GET"])
+def add_host():
+    if request.method == "GET" :
+        return render_template("add_host.html")
+    elif request.method == "POST" :
+        pass
