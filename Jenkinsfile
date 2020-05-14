@@ -13,12 +13,12 @@ pipeline {
       }
       stage('run images') {
          steps {
-            sh 'docker run -p 5000:5000 -e CONNECT_DB_HOST=192.168.33.10 -d zhouxiangyu8786/website:${version}'
+            sh 'docker run -p 5000:5000 -e CONNECT_DB_HOST=${host_ip} -d zhouxiangyu8786/website:${version}'
          }
       }
       stage('pull images') {
          steps {
-            sh 'docker login -u zhouxiangyu8786 -p zhou12369874'
+            sh 'docker login -u zhouxiangyu8786 -p ${dockerhub_pwd}'
             sh 'docker push zhouxiangyu8786/website:${version}'
          }
       }
