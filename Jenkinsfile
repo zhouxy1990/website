@@ -11,15 +11,14 @@ pipeline {
             sh 'docker build -t zhouxiangyu8786/website:${version} .'
          }
       }
-      stage('run images') {
+      stage('save images') {
          steps {
-            sh 'docker run -p 5000:5000 -e CONNECT_DB_HOST=${host_ip} -d zhouxiangyu8786/website:${version}'
+            sh 'docker save zhouxiangyu8786/website:${version} -o website:${version}.tar'
          }
       }
-      stage('pull images') {
+      stage('test images') {
          steps {
-            sh 'docker login -u zhouxiangyu8786 -p ${dockerhub_pwd}'
-            sh 'docker push zhouxiangyu8786/website:${version}'
+         sh 'ansible-playbook /etc/ansible/playbooks/build_test.yaml -e "project_path=/var/lib/jenkins/workspace/website_build_pepiline_test/website:${version}.tar image_name=website:${version} host_ip=${host_ip}" '
          }
       }
    }
